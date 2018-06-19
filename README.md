@@ -1,13 +1,13 @@
-# REST Application to ingest and search documents on IBM Cloud Object Storage 
+# REST APIs to ingest and search documents on IBM Cloud Object Storage 
 
 ## Overview
 REST APIs to ingest and retrieve stored documents in a simple Node.js application, the application uses the IBM Object Storage service available on IBM Cloud and is deployed on top of the container orchestration platform Kubernetes. Documents are parsed and validated using an external cloud function: hl7parsercloudfunction. Two types of searches are available, one by keys and one by metadata using the IBM SQL Query service.  
 
 ## Description
-This application uses the IBM Cloud Object Storage, a highly scalable cloud storage service, and to interact with it the *ibm-cos-sdk* for node.js, which provides the same S3 APIs as AWS Cloud Storage.
+This application uses the IBM Cloud Object Storage, a highly scalable cloud storage service, and to interact with it we have included the *ibm-cos-sdk* for node.js, which provides the same S3 APIs as AWS Cloud Storage.
 Two buckets have been defined as folders, one to store the objects and another one to store metadata as JSON files. The metadata bucket is used to search documents by their metadata through the IBM SQL Query Service.
-Transactionality is guarantee in each operation on the storage using the metadata as master. 
-Moreover the resource key is built using the following concatenation of metadata: *tenantid-sourceid-subjectid-timecreated-uuid*. 
+In each operation on the storage the transactionality is guaranteed using the metadata object as master. 
+The resource key is built using the following concatenation of metadata: *tenantid-sourceid-subjectid-timecreated-uuid*. 
 The REST APIs available with this application are:
 - *postData* : executes the objects upload. On the base of the content type defined as input parameter, the application first validates the input document using the configured parser cloud function (for this first release the hl7parser cloud function has been used). The parser returns with validation result and a subset of metadata extracted form the documents. Object and metadata are stored into separate bucket but with the same resource key.
 - *searchByKey* : implements the fast search by the prefix *tenantid-sourceid-subjectid* directly using the S3 APIs.
