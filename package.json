@@ -1,0 +1,28 @@
+{
+	"name": "ingestion-api",
+	"description": "APIs for managing data ingestion in the IBM Cloud Object Storage.",
+	"main": "index.js",
+	"scripts": {
+		"prestart": " npm install",
+		"start": "node index.js",
+		"start-local": "node -r dotenv/config index.js"
+	},
+	"keywords": [
+		"swagger"
+	],
+	"license": "Unlicense",
+	"private": true,
+	"dependencies": {
+		"body-parser": "^1.18.3",
+		"connect": "^3.6.6",
+		"dateformat": "^3.0.3",
+		"dotenv": "^6.0.0",
+		"express": "^4.16.3",
+		"ibm-cos-sdk": "^1.2.1",
+		"js-yaml": "^3.12.0",
+		"openwhisk": "^3.15.0",
+		"squel": "^5.12.1",
+		"swagger-tools": "^0.10.3",
+		"uuid": "^3.2.1"
+	}
+}

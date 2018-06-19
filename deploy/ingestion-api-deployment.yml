@@ -1,0 +1,56 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: ingestion-api
+  name: ingestion-api
+spec:
+  replicas: 2
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: ingestion-api
+    spec:
+      containers:
+      - image: "registry.eu-gb.bluemix.net/namespace_ingestion/ingestion-api:latest"
+        name: ingestion-api
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9080
+        env:
+        - name: DEFAULT_SERVICE_API_KEY
+          valueFrom:
+            secretKeyRef:
+             name: apikey
+             key: DEFAULT_SERVICE_API_KEY
+        - name: DEFAULT_SERVICE_INSTANCE_ID
+          valueFrom:
+            secretKeyRef:
+             name: apikey
+             key: DEFAULT_SERVICE_INSTANCE_ID
+        - name: DEFAULT_CLOUDFUNCTION_API_KEY
+          valueFrom:
+            secretKeyRef:
+             name: apikey
+             key: DEFAULT_CLOUDFUNCTION_API_KEY     
+        - name: DEFAULT_IAM_ENDPOINT 
+          value: "https://iam.bluemix.net/oidc/token"
+        - name: DEFAULT_ENDPOINT_URL 
+          value: "https://s3-api.us-geo.objectstorage.softlayer.net"
+        - name: DEFAULT_CLOUDFUNCTION_API_HOST
+          value: "openwhisk.eu-gb.bluemix.net"
+        - name: DEFAULT_CLOUDFUNCTION_NAMESPACE
+          value: "carolagirolami_dev"
+        - name: DEFAULT_OBJECTBUCKET
+          value: "data.net"
+        - name: DEFAULT_METADATABUCKET
+          value: "metadata.net"
+        - name: DEFAULT_CLOUDFUNCTION_PARSERS
+          value: "{ \"hl7\":\"hl7parsercloudfunction\"}"  
+        resources: {}
+      hostname: ingestion-api
+      restartPolicy: Always
+status: {}
