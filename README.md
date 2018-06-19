@@ -27,7 +27,7 @@ external cloud function: sqlcloudfunction.
 2. In case of upload request with content type hl7, the application invokes the hl7parser cloud function to validate and extract metadata from the input HL7 document
 3. The application access the Cloud Object Storage instance to store valid documents, get document metadata, content and search by key.  
 4. To search by metadata the sqlcloud function is invoked.
-5. The sqlcloudfunction runs sql statements using the SQL Query service.
+5./6. The sqlcloudfunction runs sql statements using the SQL Query service.
 
 
 
