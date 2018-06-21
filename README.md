@@ -48,7 +48,7 @@ Make a note of the bucket names, API end-point and API key for the next step.
  Follow instructions to create an [SQLQuery instance](https://console.bluemix.net/docs/services/sql-query/getting-started.html#getting-started-tutorial)
 
 ### 3. Build and publish hl7parser cloud function
-Follow instructions for [hl7-parser-cloud-function](https://github.com/AnnalisaChiacchi/hl7-parser-cloud-function)
+Follow instructions for [hl7-parser-cloud-function](https://github.com/IBM/hl7-parser-cloud-function)
 
 ### 4. Build and publish SQL cloud function
 Follow instructions for [sqlcloudfunction](https://github.com/IBM-Cloud/sql-query-clients/tree/master/Python/cloud_function)
