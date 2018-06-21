@@ -62,7 +62,7 @@ Make a note of the cloudfunction api host and namespace.
 Clone the repo locally. In a terminal, run:
 
 ```
-$ git clone https://github.com/carolagirolami/ingestion-api.git
+$ git clone https://github.com/IBM/ingestion-api
 ```
 
 ### 2. Run the application
