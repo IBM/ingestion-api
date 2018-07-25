@@ -48,7 +48,7 @@ Make a note of the bucket names, API end-point and API key for the next step.
  Follow instructions to create an [SQLQuery instance](https://console.bluemix.net/docs/services/sql-query/getting-started.html#getting-started-tutorial)
 
 ### 3. Build and publish hl7parser cloud function
-Follow instructions for [hl7-parser-cloud-function](https://github.com/AnnalisaChiacchi/hl7-parser-cloud-function)
+Follow instructions for [hl7-parser-cloud-function](https://github.com/IBM/hl7-parser-cloud-function)
 
 ### 4. Build and publish SQL cloud function
 Follow instructions for [sqlcloudfunction](https://github.com/IBM-Cloud/sql-query-clients/tree/master/Python/cloud_function)
@@ -62,12 +62,12 @@ Make a note of the cloudfunction api host and namespace.
 Clone the repo locally. In a terminal, run:
 
 ```
-$ git clone https://github.com/carolagirolami/ingestion-api.git
+$ git clone https://github.com/IBM/ingestion-api.git
 ```
 
 ### 2. Run the application
 1. Install [Node.js](https://nodejs.org/en/)
-2. Edit the .env.sample with parameters obtained before (Preliminary Steps) and rename it as .env file. 
+2. Edit the `.env.sample` with parameters obtained before (Preliminary Steps) and rename it as `.env` file. 
 3. Run the following commands in a terminal: 
 
 ```
@@ -91,7 +91,7 @@ Verify app is running and working correctly at http://localhost:9080/docs
 $ bx login 
 ```
 
-If you have a federated ID, use bx login --sso to log in to the IBM Cloud CLI.
+If you have a federated ID, use `bx login --sso` to log in to the IBM Cloud CLI.
 
 4. Install the Container Registry plug-in.
 
@@ -143,13 +143,13 @@ $ bx cr build -t registry.<ibm_cloud_region>.bluemix.net/<your_namespace>/ingest
   $ kubectl config current-context
 ```
 
-- Create a built-in secret to store APIKEY and SERVICE_INSTANCE_ID obtained at point 1. Create and configure an Cloud Object Storage service instance. 
+- Create a built-in secret to store `APIKEY` and `SERVICE_INSTANCE_ID` obtained at point 1. Create and configure an Cloud Object Storage service instance. 
 
 ```
   $ kubectl create secret generic apikey --from-literal=DEFAULT_API_KEY="XXXXXXX" --from-literal=DEFAULT_SERVICE_INSTANCE_ID="crn:v1:bluemix:public:cloud-object-storage:global:a/xxxxxx"  --from-literal=DEFAULT_CLOUDFUNCTION_API_KEY="XXXXXXX"
 ```
 
-- Edit the file deploy/ingestion-api-deployment.yml setting the following variables on the base of the value 
+- Edit the file `deploy/ingestion-api-deployment.yml` setting the following variables on the base of the value 
 obtained at point 1. Create and configure an Cloud Object Storage service instance.  and point  4. Build and publish SQL cloud function
 
 ```
@@ -212,7 +212,7 @@ In order to adopt the new parser function a new configuration
 ```
   "<new_contenttype>":"<new_parsercloudfunction>"
 ```
-should be added to the env variable DEFAULT_CLOUDFUNCTION_PARSERS to make this parser available for objects uploaded with header parameter : contenttype=<new_contenttype>
+should be added to the env variable `DEFAULT_CLOUDFUNCTION_PARSERS` to make this parser available for objects uploaded with header parameter : contenttype=<new_contenttype>
   
 
 # License
